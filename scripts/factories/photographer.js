@@ -8,6 +8,8 @@ function photographerFactory(data) {
         
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
+        img.setAttribute("width", "200")
+        img.setAttribute("height", "200")
         
         const link = document.createElement( 'a' );
         link.setAttribute("href", `photographer.html?id=${data.id}`);
