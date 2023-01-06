@@ -10,10 +10,11 @@ function photographerFactory(data) {
         img.setAttribute("src", picture)
         img.setAttribute("width", "200")
         img.setAttribute("height", "200")
+        img.setAttribute("alt", "");
         
         const link = document.createElement( 'a' );
         link.setAttribute("href", `photographer.html?id=${data.id}`);
-        link.setAttribute("alt", `Page de ${name}`);
+        link.setAttribute("title", `Page de ${name}`);
         
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;

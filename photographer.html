@@ -5,15 +5,21 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c503f6b98a.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="/" title="Fisheye Home page">
+        <img src="assets/images/logo.png" alt="Fish-eye logo" class="logo" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      </div>
+      <div class="medias_section">
+
       </div>
     </main>
     <div id="contact_modal">
@@ -31,6 +37,7 @@
 				</form>
 			</div>
 		</div>
+    <script src="/scripts/factories/userPhotos.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
