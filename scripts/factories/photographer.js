@@ -1,8 +1,9 @@
+// Factory function to create a photographer object, used in the home page
 function photographerFactory(data) {
     const { name, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
-
+    console.log(portrait)
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         
