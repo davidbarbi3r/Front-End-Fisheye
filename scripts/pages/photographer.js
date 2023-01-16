@@ -48,26 +48,19 @@ async function displayData(photographerMedias) {
     <img class="photograph-header__image" src="assets/photographers/${photographerMedias.photographer.portrait}" alt="portrait de ${photographerMedias.photographer.name}">
     `;
 
-  const filter = document.createElement("div");
-  filter.setAttribute("class", "filter");
-  filter.innerHTML = `
-    <form class="filter__form">
-        <label for="filter__form__select">Trier par</label>
-        <select name="filter__form__select" id="filter__form__select">
-            <option value="popularite">Popularité</option>
-            <option value="date">Date</option>
-            <option value="titre">Titre</option>
-        </select>
-    </form>
-    `;
+  const filter = new Filter(photographerMedias.medias);
 
-  userInfo.parentElement.append(filter);
+  userInfo.parentElement.append(filter.getFilterDOM());
 
   const mediasSection = document.querySelector(".medias_section");
+
+  const photographerTab = new PhotographerTab(photographerMedias.photographer);
+
+  // add event listener to filter
   photographerMedias.medias.forEach((photographerMedia) => {
-    const photographerMediaModel = userPhotosFactory(photographerMedia);
-    const userPhotosDOM = photographerMediaModel.getUserPhotosDOM();
-    mediasSection.appendChild(userPhotosDOM);
+      const photographerMediaModel = new Media(photographerMedia);
+      const userPhotosDOM = photographerMediaModel.getMediaDOM();
+      mediasSection.appendChild(userPhotosDOM);
   });
 }
 
@@ -77,4 +70,12 @@ async function init() {
   displayData(photographerMedias);
 }
 
-init();
+init()
+
+
+// have to instantiate lightbox class & photographer tab class
+// fix the filter styling
+// try to update the filter when new likes are added
+// style the lightbox and the photographer tab
+// add the next and previous buttons to the lightbox
+// add the contact form according to the maquette
