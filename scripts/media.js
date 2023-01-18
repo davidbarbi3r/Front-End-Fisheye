@@ -7,6 +7,8 @@ class Media {
     }
 
     // method to like the media
+    // if the media is already liked, we decrement the likes
+    // then we update the total likes
     likeMedia() {
         if (this.media.liked) {
             this.media.likes--;
@@ -78,25 +80,5 @@ class Media {
 
         return mediaContainer;
     }
-
-
-
-
-
-
-//   likeMedia() {
-//     console.log("like");
-//     // first we get the media likes
-//     const mediaLikes = document.querySelector(".media_likes_button");
-//     // we add an event listener on the like button
-//     mediaLikes.addEventListener("click", () => {
-//         // we increment the likes
-//         console.log(this.media.likes);
-//         this.media.likes++;
-//         // we update the DOM
-//         mediaLikes.innerHTML = this.media.likes;
-//     });
-//   }
-
 
 }
