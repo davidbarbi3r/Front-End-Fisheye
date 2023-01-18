@@ -1,49 +1,17 @@
 class Media {
-    constructor(media) {
+    constructor(media, index, medias) {
         this.media = media;
+        this.index = index;
+        this.medias = medias;
     }
-
-    // open the lightbox with the media
-    openLightbox() {
-        const lightbox = document.querySelector(".lightbox");
-        const lightboxClose = document.querySelector(".lightbox_close");
-        lightbox.classList.add("lightbox--open");
-        lightbox.style.display = "flex";
-        lightbox.innerHTML = `
-                <div class="lightbox_container">
-                    <div class="lightbox_media">
-                        ${
-                        this.media.video
-                            ? `<video src="assets/photographers/${this.media.photographerName}/${this.media.video}" alt="${this.media.title}"></video>`
-                            : `
-                            <img src="assets/photographers/${this.media.photographerName}/${this.media.image}" alt="${this.media.title}">
-                        `
-                        }
-                    </div>
-                    <h2 class="lightbox_title">${this.media.title}</h2>
-                </div>
-            `;
-
-        lightbox.appendChild(lightboxClose);
-        lightboxClose.addEventListener("click", () => {
-            this.closeLightbox();
-        }
-        );
-    }
-
-    // close the lightbox
-    closeLightbox() {
-        const lightbox = document.querySelector(".lightbox--open");
-        lightbox.style.display = "none";
-        lightbox.innerHTML = "";
-        lightbox.classList.remove("lightbox--open");
-    }
-
-    // method to get the next media in the lightbox
 
     // method to like the media
     likeMedia() {
         this.media.likes++;
+    }
+
+    showIndex() {
+        console.log(this.index)
     }
 
     // method to get the DOM of the media
@@ -54,7 +22,7 @@ class Media {
         const imageWrapper = document.createElement("div");
         imageWrapper.setAttribute("class", "image_container");
         imageWrapper.addEventListener("click", () => {
-            this.openLightbox();
+            new Lightbox(this.medias, this.index).openLightbox();
         });
 
         const img = document.createElement("img");
