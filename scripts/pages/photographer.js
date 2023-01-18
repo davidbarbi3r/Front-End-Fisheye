@@ -17,7 +17,7 @@ async function getMedias() {
   let photographer = await getData().then((photographer) =>
     photographer.photographers
         .filter((photographer) => photographer.id == id)
-  );
+      )
 
   // filter the data to get the medias from the right photographer
   let photographerMedias = await getData().then((media) =>
@@ -59,13 +59,12 @@ async function displayData(photographerMedias) {
 
   const mediasSection = document.querySelector(".medias_section");
 
-  const photographerTab = new PhotographerTab(photographerMedias.photographer);
+  const photographerTab = new PhotographerTab(photographerMedias.photographer, photographerMedias.medias);
+  document.body.appendChild(photographerTab.getPhotographerTabDOM());
 
   // iterate through the medias array, grab the index and media and instanciate Media class for each
-
-
   photographerMedias.medias.forEach((photographerMedia, index) => {
-      const photographerMediaModel = new Media(photographerMedia, index, photographerMedias.medias);
+      const photographerMediaModel = new Media(photographerMedia, index, photographerMedias.medias, photographerTab);
       const userPhotosDOM = photographerMediaModel.getMediaDOM();
       mediasSection.appendChild(userPhotosDOM);
   });

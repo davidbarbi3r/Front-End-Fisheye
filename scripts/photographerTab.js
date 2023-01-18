@@ -1,9 +1,12 @@
 class PhotographerTab {
-    constructor(photographer) {
+    constructor(photographer, medias) {
         this.photographer = photographer;
+        this.medias = medias;
     }
 
     getPhotographerTabDOM() {
+        console.log(this.photographer)
+        console.log(this.getTotalLikes())
         const photographerTab = document.createElement('div');
         photographerTab.setAttribute('class', 'photograph-tab-container');
 
@@ -11,8 +14,8 @@ class PhotographerTab {
         photographerLikesContainer.setAttribute('class', 'photograph-tab-likes-container');
 
         const photographerLikes = document.createElement('p');
-        photographerName.setAttribute('class', 'photograph-tab-likes');
-        photographerName.textContent = this.photographer.likes;
+        photographerLikes.setAttribute('class', 'photograph-tab-likes');
+        photographerLikes.textContent = this.getTotalLikes();
         photographerLikesContainer.appendChild(photographerLikes);
 
         const photographerLikesLogo = document.createElement('i');
@@ -29,7 +32,14 @@ class PhotographerTab {
         return photographerTab;
     }
 
-    getTotalLikes() {
-        return this.photographer.likes;
+     // method to get the sum of all likes
+     getTotalLikes() {
+        return this.medias.reduce((sumLikes, media) => sumLikes + media.likes, 0);
+    }
+
+    // update the total likes
+    updateTotalLikes() {
+        const photographerLikes = document.querySelector('.photograph-tab-likes');
+        photographerLikes.textContent = this.getTotalLikes();
     }
 }
