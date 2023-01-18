@@ -1,0 +1,29 @@
+.photograph-tab-container {
+    position: fixed;
+    bottom: 0px;
+    right: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #DB8876;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.photograph-tab-likes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.photograph-tab-likes {
+    margin: 0;
+    margin-right: 5px;
+}
+
+.photograph-tab-price {
+    margin: 0;
+}
