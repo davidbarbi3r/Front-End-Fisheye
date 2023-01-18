@@ -1,0 +1,72 @@
+.medias_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    margin: 0px 100px 0px 100px;
+    order: 3;
+}
+
+.media_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    height: 100%;
+}
+
+.media_infos {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 350px;
+    height: 100%;
+    margin-top: 5px;
+}
+
+.media_infos h2 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #901C1C;
+    margin-top: 0;
+}
+
+.media_infos p {
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+.media_infos .media_likes {
+    display: flex;
+    align-items: baseline;
+    justify-content: right;
+    width: 100px;
+    height: 100%;
+    color: #901C1C;
+}
+
+.media_likes button {
+    all: unset;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    color: #901C1C;
+    transform: scale(1.1);
+    order: 1;
+}
+
+.image_container img {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.image_container video {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}

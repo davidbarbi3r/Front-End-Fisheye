@@ -1,6 +1,10 @@
 @import url("photographer.css");
 @import url("photographerTab.css");
 @import url("lightbox.css");
+@import url("media.css");
+@import url("photographHeader.css");
+@import url("filter.css");
+@import url("form.css");
 
 * {
     box-sizing: border-box;

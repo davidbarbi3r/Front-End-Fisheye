@@ -1,0 +1,5 @@
+#modal .open {
+    display: flex;
+    position: fixed;
+    background-color: blue;
+}

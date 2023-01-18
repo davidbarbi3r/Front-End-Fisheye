@@ -1,49 +1,13 @@
-#contact_modal {
-    display: none;
-}
-
 #main {
     display: flex;
     flex-direction: column;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 34px;
-    border-radius: 5px;
-    order: 1;
-}
-
-.photograph-header__image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .modal {
+    display: none;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -93,117 +57,5 @@ form input {
     border-radius: 5px;
 }
 
-.filter {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    order: 2;
-    margin: 30px 0px 30px 100px;
-    width: unset;
-}
 
-.filter label {
-    font-size: 18px;
-    font-weight: bold;
-    margin-right: 20px;
-}
 
-.filter select {
-    width: 200px;
-    height: 50px;
-    border: none;
-    border-radius: 5px;
-    background-color: #901C1C;
-    font-size: 18px;
-    font-weight: bold;
-    color: #FAFAFA;
-    padding: 10px;
-    font-family: "DM Sans", sans-serif;
-    cursor: pointer;
-    text-indent: 5px;
-
-}
-
-.filter option {
-    font-size: 18px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: bold;
-    color: #FAFAFA;
-    gap: 10px;
-    background-color: #901C1C;
-    border-bottom: #FAFAFA 1px solid;
-}
-
-.medias_section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100%;
-    margin: 0px 100px 0px 100px;
-    order: 3;
-}
-
-.media_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 33%;
-    height: 100%;
-}
-
-.media_infos {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    width: 350px;
-    height: 100%;
-    margin-top: 5px;
-}
-
-.media_infos h2 {
-    font-size: 24px;
-    font-weight: normal;
-    color: #901C1C;
-    margin-top: 0;
-}
-
-.media_infos p {
-    font-size: 20px;
-    font-weight: normal;
-    margin-top: 0;
-}
-
-.media_infos .media_likes {
-    display: flex;
-    align-items: baseline;
-    justify-content: right;
-    width: 100px;
-    height: 100%;
-    color: #901C1C;
-}
-
-.media_likes button {
-    all: unset;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    margin-left: 10px;
-    color: #901C1C;
-    transform: scale(1.1);
-    order: 1;
-}
-
-.image_container img {
-    width: 350px;
-    height: 300px;
-    object-fit: cover;
-}
-
-.image_container video {
-    width: 350px;
-    height: 300px;
-    object-fit: cover;
-}
