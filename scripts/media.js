@@ -1,13 +1,21 @@
 class Media {
-    constructor(media, index, medias) {
+    constructor(media, index, medias, photographerTab) {
         this.media = media;
         this.index = index;
         this.medias = medias;
+        this.photographerTab = photographerTab;
     }
 
     // method to like the media
     likeMedia() {
-        this.media.likes++;
+        if (this.media.liked) {
+            this.media.likes--;
+            this.media.liked = false;
+        } else {
+            this.media.likes++;
+            this.media.liked = true;
+        }
+        this.photographerTab.updateTotalLikes();
     }
 
     showIndex() {
