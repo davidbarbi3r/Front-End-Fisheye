@@ -1,10 +1,12 @@
 class Form {
     constructor(photographer) {
         this.photographer = photographer;
+        
+        this.event();
     }
 
     #getFormDOM() {
-        const modal = document.querySelector('.modal');
+        const modal = document.querySelector('.modal_body');
         modal.innerHTML = `
         <header class="modal_header">
             <h2 class="modal_title">Contactez-moi ${this.photographer.name}</h2>
@@ -19,13 +21,13 @@ class Form {
             <input type="email" id="email" name="email" required>
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
-            <button class="modal_button" type="submit">
+            <button class="contact_button">
                 Envoyer
             </button>
         </form>
         `;
 
-        const close = document.querySelector('.modal_close');
+    const close = document.querySelector('.modal_close');
         close.addEventListener('click', () => {
             this.closeForm();
             });
@@ -33,18 +35,42 @@ class Form {
     
     openForm() {
         this.#getFormDOM();
-        const modal = document.getElementById('modal');
-        modal.style.position = "fixed";
-        modal.style.display = "block";
-        modal.classList.add = "open";
+        const modal = document.querySelector('.modal_body');
+        console.log("test", modal.parentElement.classList)
+        modal.parentElement.className = "modal_container open";
+        modal.className = "modal_body open";
     }
 
     closeForm() {
-        const modal = document.getElementById('modal');
-        console.log(modal);
-        modal.classList.remove = "open";
-        modal.style.display = "none";
+        const modal = document.querySelector('.modal_body');
+        modal.parentElement.className = "modal_container";
+        modal.className = "modal_body";
         modal.innerHTML = "";
     }
 
+    event() {
+        const contactButton = document.querySelector(".contact_button");
+        contactButton.addEventListener("click", () => {
+            this.openForm();
+        });
+    }
+
+    //submitForm method to console.log the form data
+    submitForm() {
+        const submitBtn = document.querySelector('.contact_button');
+        submitBtn.addEventListener('click', () => {
+            // get data from form
+            const prenom = document.getElementById('prenom').value;
+            const nom = document.getElementById('nom').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            console.log({
+                prenom: prenom,
+                nom: nom,
+                email: email,
+                message: message
+            })
+        });
+    }
 }

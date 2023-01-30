@@ -44,13 +44,13 @@ async function displayData(photographerMedias) {
   const userInfo = document.querySelector(".photograph-header");
   
   userInfo.innerHTML = `
-    <div class="photograph-header__text">
-        <h1 class="photograph-header__title">${photographerMedias.photographer.name}</h1>
-        <p class="photograph-header__location">${photographerMedias.photographer.city}, ${photographerMedias.photographer.country}</p>
-        <p class="photograph-header__tagline">${photographerMedias.photographer.tagline}</p>
+    <div class="photograph-header_text">
+        <h1 class="photograph-header_title">${photographerMedias.photographer.name}</h1>
+        <p class="photograph-header_location">${photographerMedias.photographer.city}, ${photographerMedias.photographer.country}</p>
+        <p class="photograph-header_tagline">${photographerMedias.photographer.tagline}</p>
     </div>
     <button class="contact_button">Contactez-moi</button>
-    <img class="photograph-header__image" src="assets/photographers/${photographerMedias.photographer.portrait}" alt="portrait de ${photographerMedias.photographer.name}">
+    <img class="photograph-header_image" src="assets/photographers/${photographerMedias.photographer.portrait}" alt="portrait de ${photographerMedias.photographer.name}">
     `;
 
   const filter = new Filter(photographerMedias.medias);

@@ -10,7 +10,7 @@
     order: 1;
 }
 
-.photograph-header__image {
+.photograph-header_image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -29,3 +29,9 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.photograph-header_location {
+    font-size: 24px;
+    color: #901C1C;
+}
+

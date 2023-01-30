@@ -1,5 +1,92 @@
-#modal .open {
+.modal_body {
     display: flex;
+    position: absolute;
+    border-radius: 5px;
+    background-color: #DB8876;
+    height: fit-content;
+    width: 50%;
+    max-width: 670px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+    z-index: 1;
+    opacity: 1;
+}
+
+.modal_container {
     position: fixed;
-    background-color: blue;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.open {
+    display: flex;
+}
+
+.modal_header {
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0px;
+    height: auto;
+}
+
+.modal_title {
+    margin: 0px;
+}
+
+.modal_body header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.modal_close {
+    cursor: pointer;
+    font-size: 50px;
+    color: white;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.modal_form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.modal_form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+.modal_form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+} 
+
+.modal_form textarea {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

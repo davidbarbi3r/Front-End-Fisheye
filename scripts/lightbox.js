@@ -13,16 +13,23 @@ class Lightbox {
         <button class="lightbox_close">
           <i class="fas fa-times"></i>
         </button>
+        <div class="buttons">
+          <button class="lightbox_previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="lightbox_next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        
         ${
           this.currentMedia.video
-            ? `<video src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.video}" alt="${this.currentMedia.title}"></video>`
+            ? `<video src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.video}" alt="${this.currentMedia.title}" controls preload="metadata"></video>`
             : `<img src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.image}" alt="${this.currentMedia.title}">`
         }
         <div class="lightbox_info">
           <h2 class="lightbox_title">${this.currentMedia.title}</h2>
         </div>
-        <button class="lightbox_previous"><i class="fas fa-chevron-left"></i></button>
-        <button class="lightbox_next"><i class="fas fa-chevron-right"></i></button>
       </div>
       `;
 
@@ -33,13 +40,11 @@ class Lightbox {
     });
 
     const lightboxNext = document.querySelector(".lightbox_next");
-    lightbox.appendChild(lightboxNext);
     lightboxNext.addEventListener("click", () => {
       this.nextImage();
     });
 
     const lightboxPrevious = document.querySelector(".lightbox_previous");
-    lightbox.appendChild(lightboxPrevious);
     lightboxPrevious.addEventListener("click", () => {
       this.previousImage();
     });
@@ -60,9 +65,17 @@ class Lightbox {
       <button class="lightbox_close">
             <i class="fas fa-times"></i>
       </button>
+      <div class="buttons">
+          <button class="lightbox_previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="lightbox_next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       ${
         this.currentMedia.video
-          ? `<video src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.video}" alt="${this.currentMedia.title}"></video>`
+          ? `<video src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.video}" alt="${this.currentMedia.title}" controls preload="metadata"></video>`
           : `<img src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.image}" alt="${this.currentMedia.title}">`
       }
       <div class="lightbox_info">
@@ -75,6 +88,16 @@ class Lightbox {
     const lightboxClose = document.querySelector(".lightbox_close");
     lightboxClose.addEventListener("click", () => {
       this.closeLightbox();
+    });
+
+    const lightboxNext = document.querySelector(".lightbox_next");
+    lightboxNext.addEventListener("click", () => {
+      this.nextImage();
+    });
+
+    const lightboxPrevious = document.querySelector(".lightbox_previous");
+    lightboxPrevious.addEventListener("click", () => {
+      this.previousImage();
     });
   }
 
@@ -93,9 +116,17 @@ class Lightbox {
       <button class="lightbox_close">
       <i class="fas fa-times"></i>
       </button>
+      <div class="buttons">
+          <button class="lightbox_previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="lightbox_next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       ${
       this.currentMedia.video
-        ? `<video src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.video}" alt="${this.currentMedia.title}"></video>`
+        ? `<video src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.video}" alt="${this.currentMedia.title}" controls preload="metadata"></video>`
         : `<img src="assets/photographers/${this.currentMedia.photographerName}/${this.currentMedia.image}" alt="${this.currentMedia.title}">`
       }
       <div class="lightbox_info">
@@ -108,6 +139,16 @@ class Lightbox {
     const lightboxClose = document.querySelector(".lightbox_close");
     lightboxClose.addEventListener("click", () => {
       this.closeLightbox();
+    });
+
+    const lightboxNext = document.querySelector(".lightbox_next");
+    lightboxNext.addEventListener("click", () => {
+      this.nextImage();
+    });
+
+    const lightboxPrevious = document.querySelector(".lightbox_previous");
+    lightboxPrevious.addEventListener("click", () => {
+      this.previousImage();
     });
   }
 
