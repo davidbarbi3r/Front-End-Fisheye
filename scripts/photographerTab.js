@@ -9,6 +9,7 @@ class PhotographerTab {
         console.log(this.getTotalLikes())
         const photographerTab = document.createElement('div');
         photographerTab.setAttribute('class', 'photograph-tab-container');
+        photographerTab.setAttribute('aria-label', 'Informations sur le photographe, y compris le nombre total de mentions "j\'aime" et le prix par jour');
 
         const photographerLikesContainer = document.createElement('div');
         photographerLikesContainer.setAttribute('class', 'photograph-tab-likes-container');
@@ -16,6 +17,7 @@ class PhotographerTab {
         const photographerLikes = document.createElement('p');
         photographerLikes.setAttribute('class', 'photograph-tab-likes');
         photographerLikes.textContent = this.getTotalLikes();
+        photographerLikes.setAttribute('aria-label', 'Nombre total de mentions "j\'aime"');
         photographerLikesContainer.appendChild(photographerLikes);
 
         const photographerLikesLogo = document.createElement('i');

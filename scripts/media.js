@@ -1,9 +1,10 @@
 class Media {
-    constructor(media, index, medias, photographerTab) {
+    constructor(media, index, medias, photographerTab, photographer) {
         this.media = media;
         this.index = index;
         this.medias = medias;
-        this.photographerTab = photographerTab;
+        this.photographer = photographer;
+        this.photographerTab = photographerTab ? photographerTab : new PhotographerTab(this.photographer,this.medias);
     }
 
     // method to like the media
@@ -31,6 +32,7 @@ class Media {
 
         const imageWrapper = document.createElement("div");
         imageWrapper.setAttribute("class", "image_container");
+        imageWrapper.setAttribute("aria-label", "Ouvrir la lightbox")
         imageWrapper.addEventListener("click", () => {
             new Lightbox(this.medias, this.index).openLightbox();
         });
@@ -40,9 +42,11 @@ class Media {
 
         if (this.media.image) {
             img.setAttribute("src", `assets/photographers/${this.media.photographerName}/${this.media.image}`);
+            img.setAttribute("alt", `${this.media.title} by ${this.media.photographerName}`)
             imageWrapper.appendChild(img);
         } else {
             video.setAttribute("src", `assets/photographers/${this.media.photographerName}/${this.media.video}`);
+            video.setAttribute("alt", `${this.media.title} by ${this.media.photographerName}`)
             imageWrapper.appendChild(video);
         }
 
@@ -62,6 +66,7 @@ class Media {
 
         const mediaLikesButton = document.createElement("button");
         mediaLikesButton.setAttribute("class", "media_likes_button");
+        mediaLikesButton.setAttribute("aria-label", "Aimer ce média");
         mediaLikesButton.innerHTML = `<i class="fas fa-heart"></i>`;
         mediaLikesButton.addEventListener("click", () => {
             this.likeMedia();

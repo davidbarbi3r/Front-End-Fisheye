@@ -4,22 +4,39 @@ class Filter {
     this.medias = medias;
 
     // create the filter DOM
-    this.filter = document.createElement("form");
+    this.filter = document.createElement("div");
     this.filter.setAttribute("class", "filter");
     this.filter.innerHTML = `
-            <label for="filter_form_select">Trier par</label>
+            <span>Trier par</span>
             
-            <select name="filter_form_select" id="filter_form_select">
-                <option default value="popularite">Popularité</option>
-                <option value="" disabled>─────────────</option>
-                <option value="titre">Titre</option>
-                <option value="" disabled>─────────────</option>
-                <option value="date">Date</option>
-            </select>   
+            <ul class="options">
+                <li id="popularite">Popularité</li>
+                <li id="titre">Titre</li>
+                <li id="date">Date</li>
+            </ul>   
         `;
 
-    // listen to the filter change
-    this.event();
+    const options = this.filter.querySelector(".options");
+    options.addEventListener("click", (e) => {
+      const value = e.target;
+      // set the value of the li clicked to the first option
+      options.prepend(value);
+      value.closest('ul').classList.toggle('openFilter');
+
+
+      const mediasSection = document.querySelector(".medias_section");
+      mediasSection.innerHTML = "";
+
+      this.getFilteredMedias(value.id).forEach((photographerMedia, index) => {
+        const photographerMediaModel = new Media(
+          photographerMedia,
+          index,
+          this.getFilteredMedias()
+        );
+        const userPhotosDOM = photographerMediaModel.getMediaDOM();
+        mediasSection.appendChild(userPhotosDOM);
+      });
+    });
   }
 
   // return the filter DOM
@@ -28,8 +45,7 @@ class Filter {
   }
 
   // return the medias sorted by the filter
-  getFilteredMedias() {
-    const value = this.filter.querySelector("select").value;
+  getFilteredMedias(value) {
     switch (value) {
       case "popularite":
         return this.medias.sort((a, b) => b.likes - a.likes);
@@ -45,20 +61,5 @@ class Filter {
       default:
         return this.medias.sort((a, b) => b.likes - a.likes);
     }
-  }
-
-  // listen to the filter change
-  event() {
-    this.filter.addEventListener("change", () => {
-      const mediasSection = document.querySelector(".medias_section");
-      // each time the filter is changed, we remove all the medias
-      mediasSection.innerHTML = "";
-      // then we add the filtered medias
-      this.getFilteredMedias().forEach((photographerMedia, index) => {
-        const photographerMediaModel = new Media(photographerMedia, index, this.getFilteredMedias());
-        const userPhotosDOM = photographerMediaModel.getMediaDOM();
-        mediasSection.appendChild(userPhotosDOM);
-      });
-    });
   }
 }

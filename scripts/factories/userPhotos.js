@@ -50,8 +50,3 @@ function userPhotosFactory(data) {
 
     return { getUserPhotosDOM }
 }
-
-const trou = "trou"
-
-console.log("J'aime tomber dans des" + trou + "zeijfzeif")
-console.log(`J'aime tomber dans des ${trou} fdezfzef`)

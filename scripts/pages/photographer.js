@@ -87,7 +87,6 @@ async function init() {
 
 init()
 
-// have to instantiate lightbox class & photographer tab class
 // fix the filter styling
-// style the lightbox and the photographer tab
-// add the contact form according to the maquette
+// make the contact form work properly
+// add all accessibility features

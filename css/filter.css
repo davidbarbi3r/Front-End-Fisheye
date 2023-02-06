@@ -6,15 +6,16 @@
     order: 2;
     margin: 30px 0px 30px 100px;
     width: unset;
+    z-index: 1;
 }
 
-.filter label {
+.filter span {
     font-size: 18px;
     font-weight: bold;
     margin-right: 20px;
 }
 
-.filter select {
+.filter ul {
     width: 200px;
     height: 50px;
     border: none;
@@ -23,19 +24,38 @@
     font-size: 18px;
     font-weight: bold;
     color: #FAFAFA;
-    padding: 10px;
+    padding: 0 10px;
     font-family: "DM Sans", sans-serif;
     cursor: pointer;
     text-indent: 5px;
-
+    list-style-type: none;
 }
 
-.filter option {
+ul:not(.openFilter) li:not(:first-of-type) {
+    display: none;
+  }
+
+.filter li {
     font-size: 18px;
     font-family: "DM Sans", sans-serif;
     font-weight: bold;
     color: #FAFAFA;
     gap: 10px;
     background-color: #901C1C;
-    border-bottom: #FAFAFA 1px solid;
+    padding: 10px;
+}
+
+.filter li:not(:first-child) {
+    position: relative;
+}
+
+.filter li:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    width: 90%;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
 }
