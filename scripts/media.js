@@ -21,17 +21,14 @@ class Media {
         this.photographerTab.updateTotalLikes();
     }
 
-    showIndex() {
-        console.log(this.index)
-    }
-
     // method to get the DOM of the media
     getMediaDOM() {
-        const mediaContainer = document.createElement("div");
+        const mediaContainer = document.createElement("article");
         mediaContainer.setAttribute("class", "media_container");
 
         const imageWrapper = document.createElement("div");
         imageWrapper.setAttribute("class", "image_container");
+        imageWrapper.setAttribute("tabindex", "0"); 
         imageWrapper.setAttribute("aria-label", "Ouvrir la lightbox")
         imageWrapper.addEventListener("click", () => {
             new Lightbox(this.medias, this.index).openLightbox();

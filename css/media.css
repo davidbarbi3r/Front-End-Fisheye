@@ -1,6 +1,5 @@
 .medias_section {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     height: 100%;
@@ -59,11 +58,20 @@
     order: 1;
 }
 
+.media_likes button:focus {
+    outline: rgb(0, 0, 0) auto 1px;
+}
+
 .image_container img {
     width: 350px;
     height: 300px;
     object-fit: cover;
 }
+
+.image_container:hover {
+    cursor: pointer;
+}
+
 
 .image_container video {
     width: 350px;

@@ -49,7 +49,7 @@ async function displayData(photographerMedias) {
         <p class="photograph-header_location">${photographerMedias.photographer.city}, ${photographerMedias.photographer.country}</p>
         <p class="photograph-header_tagline">${photographerMedias.photographer.tagline}</p>
     </div>
-    <button class="contact_button">Contactez-moi</button>
+    <button class="contact_button" id="open_contact">Contactez-moi</button>
     <img class="photograph-header_image" src="assets/photographers/${photographerMedias.photographer.portrait}" alt="portrait de ${photographerMedias.photographer.name}">
     `;
 
@@ -72,7 +72,6 @@ async function displayData(photographerMedias) {
   // instantiate the form class
   const contactForm = new Form(photographerMedias.photographer);
   const contactModal = document.getElementById("modal");
-  console.log(contactModal)
   const contactButton = document.querySelector(".contact_button");
   contactButton.addEventListener("click", () => {
     contactForm.openForm();
@@ -81,7 +80,6 @@ async function displayData(photographerMedias) {
 
 async function init() {
   const photographerMedias = await getMedias();
-  console.log(photographerMedias);
   displayData(photographerMedias);
 }
 

@@ -10,18 +10,18 @@
   </head>
   <body>
     <header>
-      <a href="/" title="Fisheye Home page">
+      <a href="/" title="Fisheye Home page" tabindex=0  >
         <img src="assets/images/logo.png" alt="Fish-eye logo" class="logo" />
       </a>
     </header>
     <main id="main">
       <div class="lightbox_container"></div>
-      <div class="photograph-header">
-        <button class="contact_button">Contactez-moi</button>
-      </div>
-      <div class="medias_section">
+      <header class="photograph-header">
+        <button class="contact_button" aria-label="Contact Me">Contactez-moi</button>
+      </header>
+      <section class="medias_section">
 
-      </div>
+      </section>
       <div class="modal_container">
         <div class="modal_body">
          
@@ -31,7 +31,6 @@
 
     <script src="/scripts/factories/userPhotos.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/media.js"></script>
     <script src="/scripts/filter.js"></script>
     <script src="/scripts/photographerTab.js"></script>

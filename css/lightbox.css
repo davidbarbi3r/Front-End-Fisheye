@@ -15,6 +15,10 @@
     overflow: hidden;
 }
 
+.lightbox_container:focus{
+    background-color: #901C1C;
+}
+
 .lightbox_container.open {
     visibility: visible;
     transition: visibility 0s linear 0s, opacity 0.25s 0s;

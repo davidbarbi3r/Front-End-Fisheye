@@ -21,7 +21,7 @@ class Form {
             <input type="email" id="email" name="email" required>
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
-            <button class="contact_button">
+            <button class="contact_button" id="send_form">
                 Envoyer
             </button>
         </form>
@@ -36,9 +36,19 @@ class Form {
     openForm() {
         this.#getFormDOM();
         const modal = document.querySelector('.modal_body');
-        console.log("test", modal.parentElement.classList)
+        document.getElementById('prenom').focus();
         modal.parentElement.className = "modal_container open";
         modal.className = "modal_body open";
+        const sendForm = document.getElementById('send_form');
+        sendForm.addEventListener('click', (e) => {
+            this.submitForm(e);
+        })
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key == "Escape") {
+              this.closeForm();
+            }
+          });
     }
 
     closeForm() {
@@ -49,28 +59,27 @@ class Form {
     }
 
     event() {
-        const contactButton = document.querySelector(".contact_button");
+        const contactButton = document.querySelector("#open_contact");
         contactButton.addEventListener("click", () => {
             this.openForm();
         });
     }
 
-    //submitForm method to console.log the form data
-    submitForm() {
-        const submitBtn = document.querySelector('.contact_button');
-        submitBtn.addEventListener('click', () => {
-            // get data from form
-            const prenom = document.getElementById('prenom').value;
-            const nom = document.getElementById('nom').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            console.log({
-                prenom: prenom,
-                nom: nom,
-                email: email,
-                message: message
-            })
+    submitForm(e) {
+        e.preventDefault();
+        
+        const prenom = document.getElementById('prenom').value;
+        const nom = document.getElementById('nom').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        console.log({
+            prenom: prenom,
+            nom: nom,
+            email: email,
+            message: message
         });
+
+        this.closeForm();
     }
 }

@@ -1,5 +1,4 @@
 function userPhotosFactory(data) {
-    console.log(data)
 
     function getUserPhotosDOM() {
         const mediaContainer = document.createElement( 'div' );

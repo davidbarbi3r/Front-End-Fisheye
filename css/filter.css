@@ -15,7 +15,7 @@
     margin-right: 20px;
 }
 
-.filter ul {
+.filter button {
     width: 200px;
     height: 50px;
     border: none;
@@ -24,18 +24,41 @@
     font-size: 18px;
     font-weight: bold;
     color: #FAFAFA;
-    padding: 0 10px;
+    padding: 0;
     font-family: "DM Sans", sans-serif;
     cursor: pointer;
     text-indent: 5px;
-    list-style-type: none;
+    position: relative;
 }
 
-ul:not(.openFilter) li:not(:first-of-type) {
+.filter button:focus {
+    outline: 1px solid #000000;
+}
+
+.filter button img {
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+}
+
+.filter button img {
+    rotate: 180deg;
+    transition: all 0.5s ease;
+}
+
+.filter button img.rotateArrow {
+    transform: rotate(-180deg);
+}
+
+.options:not(.openFilter) option:not(:first-of-type) {
     display: none;
   }
 
-.filter li {
+.filter option {
+    box-sizing: border-box;
     font-size: 18px;
     font-family: "DM Sans", sans-serif;
     font-weight: bold;
@@ -43,13 +66,25 @@ ul:not(.openFilter) li:not(:first-of-type) {
     gap: 10px;
     background-color: #901C1C;
     padding: 10px;
+    text-align: left;
+    width: 200px;
 }
 
-.filter li:not(:first-child) {
+.filter option:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.filter option:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.filter option:not(:first-child) {
     position: relative;
 }
 
-.filter li:not(:first-child)::before {
+.filter option:not(:first-child)::before {
     content: "";
     position: absolute;
     top: 0px;
@@ -59,3 +94,4 @@ ul:not(.openFilter) li:not(:first-of-type) {
     background-color: rgb(255, 255, 255);
     z-index: 1;
 }
+

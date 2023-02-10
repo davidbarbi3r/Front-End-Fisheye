@@ -5,8 +5,6 @@ class PhotographerTab {
     }
 
     getPhotographerTabDOM() {
-        console.log(this.photographer)
-        console.log(this.getTotalLikes())
         const photographerTab = document.createElement('div');
         photographerTab.setAttribute('class', 'photograph-tab-container');
         photographerTab.setAttribute('aria-label', 'Informations sur le photographe, y compris le nombre total de mentions "j\'aime" et le prix par jour');

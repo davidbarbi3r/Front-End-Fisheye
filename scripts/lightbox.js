@@ -9,8 +9,8 @@ class Lightbox {
     const lightbox = document.querySelector(".lightbox_container");
     document.body.appendChild(lightbox);
     lightbox.innerHTML = `
-      <div class="lightbox_media">
-        <button class="lightbox_close">
+      <div class="lightbox_media" id="lightbox">
+        <button class="lightbox_close" aria-label="Fermer la lightbox">
           <i class="fas fa-times"></i>
         </button>
         <div class="buttons">
@@ -32,9 +32,8 @@ class Lightbox {
           <h2 class="lightbox_title">${this.currentMedia.title}</h2>
         </div>
       </div>
-      `;
+      `
 
-    lightbox.classList.add("open");
     const lightboxClose = document.querySelector(".lightbox_close");
     lightboxClose.addEventListener("click", () => {
       this.closeLightbox();
@@ -44,10 +43,8 @@ class Lightbox {
     lightboxNext.addEventListener("click", () => {
       this.nextImage();
     });
-    lightboxNext.addEventListener("keydown", (e) => {
-      console.log(e);
+    document.addEventListener("keydown", (e) => {
       if (e.key == "ArrowRight") {
-        console.log("next");
         this.nextImage();
       }
     });
@@ -56,11 +53,18 @@ class Lightbox {
     lightboxPrevious.addEventListener("click", () => {
       this.previousImage();
     });
-    lightboxPrevious.addEventListener("keydown", (e) => {
-      console.log(e);
+    document.addEventListener("keydown", (e) => {
       if (e.key == "ArrowLeft") {
-        console.log("previous");
         this.previousImage();
+      }
+    });
+
+    lightbox.classList.add("open");
+    document.getElementById("lightbox").focus();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key == "Escape") {
+        this.closeLightbox();
       }
     });
   }
