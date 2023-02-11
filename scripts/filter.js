@@ -9,38 +9,76 @@ class Filter {
     this.filter.innerHTML = `
             <span>Trier par</span>
             
-            <button class="options" aria-haspopup="listbox" aria-expanded>
-            <img src="assets/icons/dropdown-arrow.svg" alt="dropdown arrow" id="drop-arrow">
-                <option aria-activedescendant role="listbox" id="popularite">Popularité</option>
-                <option aria-activedescendant role="listbox" id="titre">Titre</option>
-                <option aria-activedescendant role="listbox" id="date">Date</option>
-            </button>   
+            <div class="options" role="button" aria-haspopup="listbox" aria-expanded>
+                <div class="selected" role="listbox" aria-label="Sélectionnez une option">
+                  <span class="current_value" aria-hidden="true"></span>  
+                  <img src="assets/icons/dropdown-arrow.svg" alt="dropdown arrow" id="drop-arrow">
+                </div>
+                <ul class="dropdown" role="listbox" aria-activedescendant="popularite">
+                    <li class="dropdown_item" role="option" id="popularite" data-value="Popularite">Popularite</li>
+                    <li class="dropdown_item" role="option" id="titre" data-value="Titre">Titre</li>
+                    <li class="dropdown_item" role="option" id="date" data-value="Date">Date</li>
+                </ul>
+            </div> 
         `;
 
+    const dropdownItem = this.filter.querySelectorAll(".dropdown_item");
     const options = this.filter.querySelector(".options");
-    options.addEventListener("click", (e) => {
+    const selected = this.filter.querySelector(".selected");
+    const currentValue = this.filter.querySelector(".current_value");
+    const dropdown = this.filter.querySelector(".dropdown");
+    const mediasSection = document.querySelector(".medias_section");
+    // options.addEventListener("click", (e) => {
 
-      const value = e.target;
-      options.prepend(value);
-      value.closest('button').classList.toggle('openFilter');
+    //   const value = e.target;
+    //   options.prepend(value);
+    //   value.closest('ul').classList.toggle('openFilter');
 
-      const dropArrow = document.querySelector('#drop-arrow');
-      dropArrow.classList.toggle('rotateArrow');
+    //   const dropArrow = document.querySelector('#drop-arrow');
+    //   dropArrow.classList.toggle('rotateArrow');
 
-      const mediasSection = document.querySelector(".medias_section");
-      mediasSection.innerHTML = "";
+    selected.addEventListener("click", () => {
+      dropdown.classList.toggle("show");
+      selected.classList.toggle("active");
+      options.classList.toggle("active");
+    });
 
-      this.getFilteredMedias(value.id).forEach((photographerMedia, index) => {
+    currentValue.textContent = dropdownItem[0].getAttribute("id");
 
-        const photographerMediaModel = new Media(
-          photographerMedia,
-          index,
-          this.getFilteredMedias()
-        );
+    dropdownItem.forEach((item) => {
+      if (item.getAttribute("id") === currentValue.textContent) {
+        item.style.display = "none";
+      }
 
-        const userPhotosDOM = photographerMediaModel.getMediaDOM();
-        mediasSection.appendChild(userPhotosDOM);
+      item.addEventListener("click", (e) => {
+        console.log(e)
+        dropdown.classList.toggle("show");
+        selected.classList.toggle("active");
+        options.classList.toggle("active");
+
+        currentValue.textContent = e.target.getAttribute("id");
+        console.log(currentValue.textContent)
+        mediasSection.innerHTML = "";
+
+        this.showRightMedias(mediasSection, currentValue);
       });
+    });
+
+  }
+
+  showRightMedias(mediasSection, currentValue) {
+    mediasSection.innerHTML = "";
+
+    this.getFilteredMedias(currentValue.textContent.toLocaleLowerCase()).forEach((photographerMedia, index) => {
+
+      const photographerMediaModel = new Media(
+        photographerMedia,
+        index,
+        this.getFilteredMedias()
+      );
+
+      const userPhotosDOM = photographerMediaModel.getMediaDOM();
+      mediasSection.appendChild(userPhotosDOM);
     });
   }
 
@@ -51,6 +89,7 @@ class Filter {
 
   // return the medias sorted by the filter
   getFilteredMedias(value) {
+    console.log(value + "value")
     switch (value) {
       case "popularite":
         return this.medias.sort((a, b) => b.likes - a.likes);
