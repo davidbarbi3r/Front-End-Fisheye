@@ -7,6 +7,7 @@ class Lightbox {
   openLightbox() {
     this.currentMedia = this.medias[this.index];
     const lightbox = document.querySelector(".lightbox_container");
+    lightbox.setAttribute("aria-label", "image closeup view");
     document.body.appendChild(lightbox);
     lightbox.innerHTML = `
       <div class="lightbox_media" id="lightbox">
@@ -14,10 +15,10 @@ class Lightbox {
           <i class="fas fa-times"></i>
         </button>
         <div class="buttons">
-          <button class="lightbox_previous">
+          <button class="lightbox_previous" aria-label="Previous image">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="lightbox_next">
+          <button class="lightbox_next" aria-label="Next image">
             <i class="fas fa-chevron-right"></i>
           </button>
         </div>
@@ -34,11 +35,9 @@ class Lightbox {
       </div>
       `
 
-    const lightboxClose = document.querySelector(".lightbox_close");
-    lightboxClose.addEventListener("click", () => {
-      this.closeLightbox();
-    });
 
+
+    // Next image behavior
     const lightboxNext = document.querySelector(".lightbox_next");
     lightboxNext.addEventListener("click", () => {
       this.nextImage();
@@ -49,6 +48,7 @@ class Lightbox {
       }
     });
 
+    // Previous image behavior
     const lightboxPrevious = document.querySelector(".lightbox_previous");
     lightboxPrevious.addEventListener("click", () => {
       this.previousImage();
@@ -61,6 +61,12 @@ class Lightbox {
 
     lightbox.classList.add("open");
     document.getElementById("lightbox").focus();
+
+    // Close the lightbox behavior
+    const lightboxClose = document.querySelector(".lightbox_close");
+    lightboxClose.addEventListener("click", () => {
+      this.closeLightbox();
+    });
 
     document.addEventListener("keydown", (e) => {
       if (e.key == "Escape") {
@@ -95,6 +101,7 @@ class Lightbox {
     this.updateLightbox(this.currentMedia);
   }
 
+  //grab the dom element and set the innerHTML to the current media
   updateLightbox(currentMedia) {
     this.currentMedia = currentMedia;
     const media = document.querySelector(".media-container");

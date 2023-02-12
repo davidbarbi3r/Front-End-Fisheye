@@ -4,6 +4,7 @@ class Media {
         this.index = index;
         this.medias = medias;
         this.photographer = photographer;
+        // if it's the first media of the photographer, we create a new PhotographerTab
         this.photographerTab = photographerTab ? photographerTab : new PhotographerTab(this.photographer,this.medias);
     }
 
@@ -26,9 +27,8 @@ class Media {
         const mediaContainer = document.createElement("article");
         mediaContainer.setAttribute("class", "media_container");
 
-        const imageWrapper = document.createElement("div");
+        const imageWrapper = document.createElement("button");
         imageWrapper.setAttribute("class", "image_container");
-        imageWrapper.setAttribute("tabindex", "0"); 
         imageWrapper.setAttribute("aria-label", "Ouvrir la lightbox")
         imageWrapper.addEventListener("click", () => {
             new Lightbox(this.medias, this.index).openLightbox();

@@ -36,10 +36,6 @@ function userPhotosFactory(data) {
         mediaLikesIcon.setAttribute("class", "fa-solid fa-heart");
         mediaLikes.appendChild(mediaLikesIcon);
         
-        // const mediaDate = document.createElement( 'p' );
-        // mediaDate.textContent = data.date;
-        // mediaInfos.appendChild(mediaDate);
-        
         mediaInfos.appendChild(mediaLikes);
         mediaContainer.appendChild(imageWrapper);
         mediaContainer.appendChild(mediaInfos);

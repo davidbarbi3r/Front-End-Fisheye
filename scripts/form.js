@@ -13,14 +13,14 @@ class Form {
             <button class="modal_close"><i class="fa-solid fa-times"></i></button>      
         </header>
         <form class="modal_form">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" required>
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" required>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <label for="prenom">Prénom <span class="mandatory">*</span></label>
+            <input type="text" id="prenom" name="prenom" aria-required="true">
+            <label for="nom">Nom <span class="mandatory">*</span></label>
+            <input type="text" id="nom" name="nom" aria-required="true">
+            <label for="email">Email <span class="mandatory">*</span></label>
+            <input type="email" id="email" name="email" aria-required="true">
             <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message"></textarea>
             <button class="contact_button" id="send_form">
                 Envoyer
             </button>
@@ -72,6 +72,11 @@ class Form {
         const nom = document.getElementById('nom').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
+
+        if (prenom == "" || nom == "" || email == "") {
+            alert("Veuillez remplir les champs obligatoires");
+            return;
+        }
         
         console.log({
             prenom: prenom,

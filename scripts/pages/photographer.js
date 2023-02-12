@@ -84,7 +84,3 @@ async function init() {
 }
 
 init()
-
-// fix the filter styling
-// make the contact form work properly
-// add all accessibility features

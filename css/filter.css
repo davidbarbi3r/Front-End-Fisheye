@@ -24,7 +24,6 @@
     rotate: 0deg;
 }
 
-
 .options {
     position: relative;
     width: 170px;
@@ -49,8 +48,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 23px 18px 0 20px;
-  padding-bottom: 14px;
+  margin: 20px;
   cursor: pointer;
   z-index: 10;
 } 

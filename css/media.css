@@ -68,8 +68,16 @@
     object-fit: cover;
 }
 
+.image_container {
+    all: unset;
+}
+
 .image_container:hover {
     cursor: pointer;
+}
+
+.image_container:focus {
+    outline: black auto 1px;
 }
 
 
