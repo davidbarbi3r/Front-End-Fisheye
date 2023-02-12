@@ -84,5 +84,5 @@
 
 .lightbox_next:hover, .lightbox_next:focus, .lightbox_previous:hover, .lightbox_previous:focus, .lightbox_close:hover, .lightbox_close:focus {
     cursor: pointer;
-    scale: 1.1;
+    transform: scale(1.1);
 }
