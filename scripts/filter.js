@@ -15,9 +15,9 @@ class Filter {
                   <img src="assets/icons/dropdown-arrow.svg" alt="dropdown arrow" id="drop-arrow">
                 </div>
                 <ul class="dropdown" role="listbox" aria-activedescendant="popularite">
-                    <li class="dropdown_item" role="option" id="popularite" data-value="Popularite">Popularite</li>
-                    <li class="dropdown_item" role="option" id="titre" data-value="Titre">Titre</li>
-                    <li class="dropdown_item" role="option" id="date" data-value="Date">Date</li>
+                    <li class="dropdown_item" role="option" id="popularite">Popularite</li>
+                    <li class="dropdown_item" role="option" id="titre">Titre</li>
+                    <li class="dropdown_item" role="option" id="date">Date</li>
                 </ul>
             </div> 
         `;
@@ -28,14 +28,6 @@ class Filter {
     const currentValue = this.filter.querySelector(".current_value");
     const dropdown = this.filter.querySelector(".dropdown");
     const mediasSection = document.querySelector(".medias_section");
-    // options.addEventListener("click", (e) => {
-
-    //   const value = e.target;
-    //   options.prepend(value);
-    //   value.closest('ul').classList.toggle('openFilter');
-
-    //   const dropArrow = document.querySelector('#drop-arrow');
-    //   dropArrow.classList.toggle('rotateArrow');
 
     selected.addEventListener("click", () => {
       dropdown.classList.toggle("show");
@@ -43,27 +35,35 @@ class Filter {
       options.classList.toggle("active");
     });
 
-    currentValue.textContent = dropdownItem[0].getAttribute("id");
+    currentValue.textContent = dropdownItem[0].id.slice(0, 1).toUpperCase() + dropdownItem[0].id.slice(1);
+    currentValue.setAttribute("tabindex", "0")
 
     dropdownItem.forEach((item) => {
-      if (item.getAttribute("id") === currentValue.textContent) {
+      if (item.getAttribute("id") === currentValue.textContent.toLowerCase()) {
         item.style.display = "none";
       }
 
       item.addEventListener("click", (e) => {
-        console.log(e)
         dropdown.classList.toggle("show");
         selected.classList.toggle("active");
         options.classList.toggle("active");
 
-        currentValue.textContent = e.target.getAttribute("id");
+        currentValue.textContent = e.target.id.slice(0, 1).toUpperCase() + e.target.id.slice(1);
         console.log(currentValue.textContent)
+
+        dropdownItem.forEach((item) => {
+          if (item.getAttribute("id") === currentValue.textContent.toLowerCase()) {
+            item.style.display = "none";
+          } else {
+            item.style.display = "block";
+          }
+        });
+
         mediasSection.innerHTML = "";
 
         this.showRightMedias(mediasSection, currentValue);
       });
     });
-
   }
 
   showRightMedias(mediasSection, currentValue) {
@@ -74,7 +74,7 @@ class Filter {
       const photographerMediaModel = new Media(
         photographerMedia,
         index,
-        this.getFilteredMedias()
+        this.medias
       );
 
       const userPhotosDOM = photographerMediaModel.getMediaDOM();
@@ -89,7 +89,6 @@ class Filter {
 
   // return the medias sorted by the filter
   getFilteredMedias(value) {
-    console.log(value + "value")
     switch (value) {
       case "popularite":
         return this.medias.sort((a, b) => b.likes - a.likes);
