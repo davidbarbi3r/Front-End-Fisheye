@@ -10,7 +10,7 @@ class Form {
         modal.innerHTML = `
         <header class="modal_header">
             <h2 class="modal_title">Contactez-moi ${this.photographer.name}</h2>
-            <button class="modal_close"><i class="fa-solid fa-times"></i></button>      
+            <button class="modal_close" role="button"><i class="fa-solid fa-times"></i></button>      
         </header>
         <form class="modal_form">
             <label for="prenom">Prénom <span class="mandatory">*</span></label>
