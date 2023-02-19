@@ -11,10 +11,10 @@ class Filter {
             
             <div class="options" role="button" aria-haspopup="listbox" aria-expanded>
                 <div class="selected" role="listbox" aria-label="Sélectionnez une option">
-                  <span class="current_value" aria-hidden="true"></span>  
+                  <span class="current_value"></span>  
                   <img src="assets/icons/dropdown-arrow.svg" alt="dropdown arrow" id="drop-arrow">
                 </div>
-                <ul class="dropdown" role="listbox" aria-activedescendant="popularite">
+                <ul class="dropdown" role="listbox" aria-activedescendant="popularite" aria-hidden="true">
                     <li class="dropdown_item" role="option" id="popularite">Popularite</li>
                     <li class="dropdown_item" role="option" id="titre">Titre</li>
                     <li class="dropdown_item" role="option" id="date">Date</li>
@@ -68,6 +68,7 @@ class Filter {
 
       item.addEventListener("click", (e) => {
         dropdown.classList.toggle("show");
+        dropdown.setAttribute("aria-hidden", "false");
         selected.classList.toggle("active");
         options.classList.toggle("active");
 

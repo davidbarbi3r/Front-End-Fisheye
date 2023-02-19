@@ -7,6 +7,7 @@ class Form {
 
     #getFormDOM() {
         const modal = document.querySelector('.modal_body');
+        modal.setAttribute("aria-hidden", "false");
         modal.innerHTML = `
         <header class="modal_header">
             <h2 class="modal_title">Contactez-moi ${this.photographer.name}</h2>
@@ -37,6 +38,7 @@ class Form {
         this.#getFormDOM();
         const modal = document.querySelector('.modal_body');
         document.getElementById('prenom').focus();
+        document.body.setAttribute("aria-hidden", "true");
         modal.parentElement.className = "modal_container open";
         modal.className = "modal_body open";
         const sendForm = document.getElementById('send_form');

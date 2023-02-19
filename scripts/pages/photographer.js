@@ -71,11 +71,11 @@ async function displayData(photographerMedias) {
 
   // instantiate the form class
   const contactForm = new Form(photographerMedias.photographer);
-  const contactModal = document.getElementById("modal");
   const contactButton = document.querySelector(".contact_button");
   contactButton.addEventListener("click", () => {
     contactForm.openForm();
   });
+  contactButton.setAttribute("role", "dialog");
 }
 
 async function init() {

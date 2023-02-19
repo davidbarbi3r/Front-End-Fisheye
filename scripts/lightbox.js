@@ -8,7 +8,9 @@ class Lightbox {
     this.currentMedia = this.medias[this.index];
     const lightbox = document.querySelector(".lightbox_container");
     lightbox.setAttribute("aria-label", "image closeup view");
+    lightbox.setAttribute("aria-hidden", "false");
     document.body.appendChild(lightbox);
+    document.body.setAttribute("aria-hidden", "true");
     lightbox.innerHTML = `
       <div class="lightbox_media" id="lightbox">
         <button class="lightbox_close" aria-label="Fermer la lightbox">
@@ -119,6 +121,7 @@ class Lightbox {
   closeLightbox() {
     const lightbox = document.querySelector(".lightbox_container");
     lightbox.setAttribute("aria-hidden", "true");
+    document.body.setAttribute("aria-hidden", "false");
     lightbox.innerHTML = "";
     lightbox.classList.remove("open");
   }
