@@ -4,7 +4,8 @@ class Filter {
     this.medias = medias;
 
     // create the filter DOM
-    this.filter = document.createElement("div");
+    this.filter = document.querySelector("#sort");
+    // this.filter = document.createElement("div");
     this.filter.setAttribute("class", "filter");
     this.filter.innerHTML = `
             <span>Trier par</span>
@@ -34,7 +35,7 @@ class Filter {
       selected.classList.toggle("active");
       options.classList.toggle("active");
     });
-    selected.setAttribute("tabindex", "0");
+    selected.setAttribute("tabindex", "3");
 
     selected.addEventListener("keydown", (e) => {
       switch (e.keyCode) {
@@ -57,7 +58,7 @@ class Filter {
     });
 
     currentValue.textContent = dropdownItem[0].id.slice(0, 1).toUpperCase() + dropdownItem[0].id.slice(1);
-    currentValue.setAttribute("tabindex", "0")
+    currentValue.setAttribute("tabindex", "3")
     dropdownItem[0].setAttribute("aria-selected", "true");
 
 

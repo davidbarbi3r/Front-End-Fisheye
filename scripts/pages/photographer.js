@@ -49,7 +49,7 @@ async function displayData(photographerMedias) {
         <p class="photograph-header_location">${photographerMedias.photographer.city}, ${photographerMedias.photographer.country}</p>
         <p class="photograph-header_tagline">${photographerMedias.photographer.tagline}</p>
     </div>
-    <button class="contact_button" id="open_contact">Contactez-moi</button>
+    <button class="contact_button" id="open_contact" tabindex=2>Contactez-moi</button>
     <img class="photograph-header_image" src="assets/photographers/${photographerMedias.photographer.portrait}" alt="portrait de ${photographerMedias.photographer.name}">
     `;
 
